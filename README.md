@@ -12,7 +12,7 @@
 
 ## Description
 
-[Visit the deployed site here](placeholder)
+[Visit the deployed site here](https://brettsantor.github.io/work-day-scheduler/)
 
 This Work Day Scheduler allows you to save important tasks in a time slot so they will not get lost in your busy schedule. The time slots are color coded to easiy distinguish time slots that have passed, current or coming up. Time slots are broken down into hours so the current hour will appear red while the past hours will appear gray and the coming hours appear in green. This Work Day Scheduler runs on the average U.S work day which is 9am-5pm and displays the current date at the top of the page.
 
