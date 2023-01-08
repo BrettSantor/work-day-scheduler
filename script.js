@@ -3,7 +3,7 @@
 // in the html.
 var dateEl = $("#currentDay");
 var currentDate = dayjs();
-var currentHour = dayjs().format('[hour-]H');
+var currentHour = dayjs().format('[hour-]HH');
 var saveBtn = $(".saveBtn");
 var hours = $("div[id|='hour']");
 var divSel = $('.time-block')
@@ -53,6 +53,8 @@ $(function () {
   // current hour in 24-hour time?
   //
   hours.each(function () {
+    console.log(this.id)
+    console.log("the hour is " + currentHour)
     if (this.id === currentHour) {
       $(this).removeClass('past future').addClass('present');
     } else if (this.id < currentHour) {
