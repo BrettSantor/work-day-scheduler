@@ -17,12 +17,16 @@ $(function () {
   //
 
   var gimme = JSON.parse(localStorage.getItem('listObj'));
+  if (gimme === null){
+    gimme = []
+  }
  
 
 
 
   for (var i = 0; i < divSel.length; i++) {
     for (var j = 0; j < gimme.length; j++) {
+      console.log(gimme)
     if (gimme[j].names === divSel[i].id) {
        var now = gimme[j].values;
        divSel[i].querySelector('.description').innerHTML = now
