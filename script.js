@@ -7,7 +7,6 @@ var currentHour = dayjs().format('[hour-]H');
 var saveBtn = $(".saveBtn");
 var hours = $("div[id|='hour']");
 var divSel = $('.time-block')
- console.log(divSel[0].id)
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -18,24 +17,15 @@ $(function () {
   //
 
   var gimme = JSON.parse(localStorage.getItem('listObj'));
-  //console.log(JSON.parse(localStorage.getItem('listObj')));
-  //console.log(gimme[0].names);
+ 
 
 
 
   for (var i = 0; i < divSel.length; i++) {
-    console.log(divSel[i].id)
     for (var j = 0; j < gimme.length; j++) {
-      console.log(gimme[j])
     if (gimme[j].names === divSel[i].id) {
-      console.log("this one")
        var now = gimme[j].values;
-       console.log(now)
-       console.log(divSel[i].querySelector('.description'))
        divSel[i].querySelector('.description').innerHTML = now
-    // } else if(gimme[j].names !== divSel[i].id){
-    //   divSel[i].querySelector('.description').innerHTML = ""
-    //     console.log("no");
     }
   }
   }
@@ -51,7 +41,7 @@ $(function () {
     storedDos = { names: toDoKey, values: toDos }
 
     theList.push(storedDos)
-    // 
+    
     localStorage.setItem("listObj", JSON.stringify(theList));
 
   });
@@ -72,14 +62,12 @@ $(function () {
     }
   });
 
-  console.log(currentHour);
-  console.log(hours);
+  
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  console.log(hours.length);
 
   // TODO: Add code to display the current date in the header of the page.
   dateEl.text(currentDate.format("MMMM, dddd D, YYYY"));
