@@ -53,8 +53,6 @@ $(function () {
   // current hour in 24-hour time?
   //
   hours.each(function () {
-    console.log(this.id)
-    console.log("the hour is " + currentHour)
     if (this.id === currentHour) {
       $(this).removeClass('past future').addClass('present');
     } else if (this.id < currentHour) {

@@ -14,6 +14,7 @@
 
 [Visit the deployed site here](placeholder)
 
+This Work Day Scheduler allows you to save important tasks in a time slot so they will not get lost in your busy schedule. The time slots are color coded to easiy distinguish time slots that have passed, current or coming up. Time slots are broken down into hours so the current hour will appear red while the past hours will appear gray and the coming hours appear in green. This Work Day Scheduler runs on the average U.S work day which is 9am-5pm and displays the current date at the top of the page.
 
 
 ![image showcasing color coded time blocks](./assets/workDayColor.png)
@@ -21,13 +22,13 @@
 
 ## Usage
 
-
+You can save your tasks by typing them into the text area on a time slot and click on the save button. This utilizes local storage so that your tasks persist from day to day. 
 
 ![gif showcasing the save feature](/assets/Work_Day_Scheduler_save.gif)
 
 ## Learning Points
 
-
+During this project I gained experience utilizing Bootstraps stylings and getting familiar with its class mechanic. I was also able to get more familiar with JQuery methods and Day.js by using the dayjs and format methods. JQuery was used to target and display to the page as well as toggling Bootstrap classes.
 
 ## Arthor Info
 
