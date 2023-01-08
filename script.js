@@ -1,14 +1,14 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var dateEl = $("#currentDay")
-var currentDate = dayjs()
-var currentHour = dayjs().format('[hour-]H')
-var saveBtn = $(".saveBtn")
-var hours = $("div[id|='hour']")
-// var dateCheck =  dayjs().isbefore(thatDate, 'hour')
-
-$(function() {
+var dateEl = $("#currentDay");
+var currentDate = dayjs();
+var currentHour = dayjs().format('[hour-]H');
+var saveBtn = $(".saveBtn");
+var hours = $("div[id|='hour']");
+var divSel = $('.time-block')
+ console.log(divSel[0].id)
+$(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -17,12 +17,44 @@ $(function() {
   // useful when saving the description in local storage?
   //
 
-saveBtn.on('click', function(){
+  var gimme = JSON.parse(localStorage.getItem('listObj'));
+  //console.log(JSON.parse(localStorage.getItem('listObj')));
+  //console.log(gimme[0].names);
 
-  // console.log($(this).attr('description'))
-  toDos = $('#text').val()
-  localStorage.setItem('what', toDos)
-})
+
+
+  for (var i = 0; i < divSel.length; i++) {
+    console.log(divSel[i].id)
+    for (var j = 0; j < gimme.length; j++) {
+      console.log(gimme[j])
+    if (gimme[j].names === divSel[i].id) {
+      console.log("this one")
+       var now = gimme[j].values;
+       console.log(now)
+       console.log(divSel[i].querySelector('.description'))
+       divSel[i].querySelector('.description').innerHTML = now
+    // } else if(gimme[j].names !== divSel[i].id){
+    //   divSel[i].querySelector('.description').innerHTML = ""
+    //     console.log("no");
+    }
+  }
+  }
+
+  saveBtn.on('click', function () {
+    var toDoKey = $(this).closest('div').attr('id');
+    var toDos = $(this).closest('div').children('textarea').val();
+    var theList = [];
+    theList = JSON.parse(localStorage.getItem('listObj'));
+    if (theList === null) {
+      theList = [];
+    }
+    storedDos = { names: toDoKey, values: toDos }
+
+    theList.push(storedDos)
+    // 
+    localStorage.setItem("listObj", JSON.stringify(theList));
+
+  });
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -30,33 +62,26 @@ saveBtn.on('click', function(){
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
-hours.each(function(){
-  if(this.id === currentHour){
-    $(this).removeClass('past future').addClass('present')
-  } else if(this.id < currentHour){
-    $(this).removeClass('present future').addClass('past')
-  } else if(this.id > currentHour){
-    $(this).removeClass('past present').addClass('future')
-  }
-})
+  hours.each(function () {
+    if (this.id === currentHour) {
+      $(this).removeClass('past future').addClass('present');
+    } else if (this.id < currentHour) {
+      $(this).removeClass('present future').addClass('past');
+    } else if (this.id > currentHour) {
+      $(this).removeClass('past present').addClass('future');
+    }
+  });
 
-  // for(var i = 0; i < hours.length; i++) {
-    //  if(hours[i] == currentHour) {
-      // hours[i].removeclass('present future').addclass('past');
-      // hours[i].removeclass('future')
-      // hours[i].addclass('past');
-    //  }
-  // }
-  console.log(currentHour)
-console.log(hours)
+  console.log(currentHour);
+  console.log(hours);
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-console.log(hours.length)
+  console.log(hours.length);
 
   // TODO: Add code to display the current date in the header of the page.
-  dateEl.text(currentDate.format("MMMM, dddd D, YYYY"))
+  dateEl.text(currentDate.format("MMMM, dddd D, YYYY"));
 });
 
